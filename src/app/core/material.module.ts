@@ -13,28 +13,28 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
     imports: [
-    CommonModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatCardModule,
-    MatInputModule,
-    MatDialogModule,
-    MatTableModule,
-    MatMenuModule,
-    MatIconModule,
-    MatProgressSpinnerModule
+        CommonModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCardModule,
+        MatInputModule,
+        MatDialogModule,
+        MatTableModule,
+        MatMenuModule,
+        MatIconModule,
+        MatProgressSpinnerModule,
     ],
     exports: [
-    CommonModule,
-     MatToolbarModule,
-     MatButtonModule,
-     MatCardModule,
-     MatInputModule,
-     MatDialogModule,
-     MatTableModule,
-     MatMenuModule,
-     MatIconModule,
-     MatProgressSpinnerModule
-     ],
-  })
-  export class CustomMaterialModule { }
+        CommonModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCardModule,
+        MatInputModule,
+        MatDialogModule,
+        MatTableModule,
+        MatMenuModule,
+        MatIconModule,
+        MatProgressSpinnerModule,
+    ],
+})
+export class CustomMaterialModule {}
