@@ -11,9 +11,10 @@ import { CustomMaterialModule } from './core/material.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent, 
     LoginComponent,
-    ProfileComponent
+
+    ProfileComponent 
   ],
   imports: [
     BrowserModule,
