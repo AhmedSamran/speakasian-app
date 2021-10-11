@@ -8,7 +8,11 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint:scss": "stylelint 'src/**/*.scss' --syntax scss",
+    "lint:scss:fix": "stylelint 'src/**/*.scss' --syntax scss --fix",
+    "lint:js": "eslint . --ext .js,.jsx",
+    "lint:js:fix": "npm run lint:js -- --fix"
   },
   "private": true,
   "dependencies": {
@@ -29,7 +33,6 @@
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "tslint-angular": "^3.0.3",
-    "tslint-config-prettier": "^1.18.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
@@ -54,9 +57,19 @@
     "typescript": "~4.0.2",
     "husky": "^7.0.0"
   },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "eslint . --fix",
+      "git add"
+    ],
+    "src/**/*.scss": [
+      "stylelint --syntax scss --fix",
+      "git add"
+    ]
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick — staged && ng lint"
+      "pre-commit": "lint-staged"
     }
   }
 }
