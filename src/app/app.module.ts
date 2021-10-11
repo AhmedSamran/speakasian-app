@@ -8,9 +8,17 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule } from '@angular/forms';
 import { CustomMaterialModule } from './core/material.module';
+import { NavigationMenuComponent } from './navigation-menu/navigation-menu.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
-    declarations: [AppComponent, LoginComponent, ProfileComponent],
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        ProfileComponent,
+        NavigationMenuComponent,
+        LandingPageComponent,
+    ],
     imports: [
         BrowserModule,
         AppRoutingModule,
