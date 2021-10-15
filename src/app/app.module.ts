@@ -16,10 +16,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { HttpClientModule } from '@angular/common/http';
 
 // Components
 import { NavigationMenuComponent } from './navigation-menu/navigation-menu.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
     declarations: [
@@ -28,6 +30,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
         ProfileComponent,
         NavigationMenuComponent,
         LandingPageComponent,
+        RegisterComponent,
     ],
     imports: [
         BrowserModule,
@@ -45,6 +48,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
         MatIconModule,
         MatProgressSpinnerModule,
         ReactiveFormsModule,
+        HttpClientModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

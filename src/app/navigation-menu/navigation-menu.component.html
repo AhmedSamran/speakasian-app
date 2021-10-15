@@ -1,23 +1,24 @@
 <div class="container-menu">
-    <mat-toolbar color="primary">
+    <mat-toolbar class="nav-toolbar">
         <mat-toolbar-row>
             <span>SpeakAsian</span>
-            <button mat-button>About</button>
-            <button mat-button>Contact</button>
+            <button mat-button [routerLink]="['profile']">About</button>
+
+            <button mat-button [routerLink]="['profile']">Contact</button>
             <span class="example-spacer"></span>
             <button mat-icon-button [matMenuTriggerFor]="menu">
                 <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item>
+                <button mat-menu-item [routerLink]="['profile']">
                     <mat-icon>person</mat-icon>
                     <span>profile</span>
                 </button>
-                <button mat-menu-item disabled>
+                <button mat-menu-item disabled [routerLink]="['profile']">
                     <mat-icon>exit_to_app</mat-icon>
                     <span>logout</span>
                 </button>
-                <button mat-menu-item>
+                <button mat-menu-item [routerLink]="['profile']">
                     <mat-icon>attachment</mat-icon>
                     <span>attachements</span>
                 </button>

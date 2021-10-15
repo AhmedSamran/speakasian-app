@@ -1,21 +1,64 @@
-mat-form-field {
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+.row {
+    margin: 0 auto;
+    padding: 0 auto;
+}
+
+.card {
+    font-size: 20px;
+}
+
+.form-group {
+    margin: 8px;
+    height: 100px;
+}
+
+label {
+    margin: 8px;
+}
+
+.card-header {
+    color: #bc002d;
     display: block;
-    width: max-content;
-    margin: auto;
-}
-
-.container-card {
-    height: 100%;
-}
-
-.login-card {
-    display: flex;
-    justify-content: center;
-}
-
-form {
-    width: 400px;
-    display: block;
-    margin: auto;
     text-align: center;
+    background-color: #fff;
+    font-style: bold;
+    font-size: 32px;
+}
+
+.form-control {
+    width: 100%;
+    margin: 0 auto;
+
+    @include media-breakpoint-up(sm) {
+    }
+}
+
+::placeholder {
+    color: #bc002d;
+}
+
+.custom-btn {
+    width: 45px;
+    height: 45px;
+    margin: 8px;
+    background-color: #bc002d;
+    color: #fff;
+    border: 1px solid #bc002d;
+    border-radius: 50%;
+    font-size: 15px;
+    padding: 0px;
+    @include media-breakpoint-up(sm) {
+        width: 4.2em;
+        height: 4.2em;
+        font-size: 20px;
+    }
+}
+
+.container-fluid {
+    height: 75%;
+    width: 100%;
 }

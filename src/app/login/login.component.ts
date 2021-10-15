@@ -8,35 +8,35 @@ import { Router } from '@angular/router';
     styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-    form: FormGroup;
-    public loginInvalid = false;
-    private formSubmitAttempt = false;
-    private returnUrl: string;
+    loginForm: FormGroup;
+    submitted = false;
 
-    constructor(private fb: FormBuilder, private router: Router) {
-        this.form = this.fb.group({
-            username: ['', Validators.email],
-            password: ['', Validators.required],
+    constructor(private router: Router, private formBuilder: FormBuilder) {}
+
+    email: string;
+    password: string;
+
+    ngOnInit(): void {
+        this.loginForm = this.formBuilder.group({
+            email: ['', [Validators.required, Validators.email]],
+            password: ['', [Validators.required, Validators.minLength(8)]],
         });
     }
 
-    username: string;
-    password: string;
+    // convenience getter for easy access to form fields
+    get f(): any {
+        return this.loginForm.controls;
+    }
 
-    ngOnInit(): void {}
-
-    async onSubmit(): Promise<void> {
-        this.loginInvalid = false;
-        this.formSubmitAttempt = false;
-        if (this.form.valid) {
-            try {
-                const username = this.form.get('username')?.value;
-                const password = this.form.get('password')?.value;
-            } catch (err) {
-                this.loginInvalid = true;
-            }
-        } else {
-            this.formSubmitAttempt = true;
+    onSubmit(): void {
+        // this.submitted = true;
+        if (this.loginForm.invalid) {
+            return;
+        }
+        if (this.loginForm.valid) {
+            // Call login API
+            console.log('the form is valid');
+            this.router.navigate(['profile']);
         }
     }
 }

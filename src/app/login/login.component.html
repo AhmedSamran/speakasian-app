@@ -1,34 +1,59 @@
-<div class="d-flex align-items-center justify-content-center container-card">
-    <mat-card class="col-xl-3">
-        <mat-card-content>
-            <form [formGroup]="form" (ngSubmit)="onSubmit()">
-                <h2>Log In</h2>
-                <mat-error *ngIf="loginInvalid">
-                    The username and password were not recognized
-                </mat-error>
-                <mat-form-field class="full-width-input">
-                    <input
-                        matInput
-                        placeholder="Email"
-                        formControlName="username"
-                        required
-                    />
-                    <mat-error>
-                        Please provide a valid email address
-                    </mat-error>
-                </mat-form-field>
-                <mat-form-field class="full-width-input">
-                    <input
-                        matInput
-                        type="password"
-                        placeholder="Password"
-                        formControlName="password"
-                        required
-                    />
-                    <mat-error> Please provide a valid password </mat-error>
-                </mat-form-field>
-                <button mat-raised-button color="primary">Login</button>
+<!-- main app container -->
+<div class="container-fluid row justify-content-center align-items-center">
+    <div class="card mt-5 col-sm-12 col-md-10 col-xl-8">
+        <h2 class="card-header">Login</h2>
+        <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label>Email</label>
+                        <input
+                            type="text"
+                            placeholder="jhon@smith.com"
+                            formControlName="email"
+                            class="form-control"
+                            [ngClass]="{ 'is-invalid': f.email.errors }"
+                        />
+                        <div
+                            *ngIf="
+                                !f.email.valid &&
+                                (f.email.dirty || f.email.touched)
+                            "
+                            class="invalid-feedback"
+                        >
+                            <div *ngIf="f.email.errors.required">
+                                <span>Email is required</span>
+                            </div>
+                            <div *ngIf="f.email.errors.email">
+                                Email must be a valid email address
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label>Password</label>
+                        <input
+                            type="password"
+                            placeholder="password"
+                            formControlName="password"
+                            class="form-control"
+                            [ngClass]="{ 'is-invalid': f.password.errors }"
+                        />
+                        <div *ngIf="f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">
+                                Password is required
+                            </div>
+                            <div *ngIf="f.password.errors.minlength">
+                                Password must be at least 8 characters
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn custom-btn">GO</button>
+                </div>
             </form>
-        </mat-card-content>
-    </mat-card>
+        </div>
+    </div>
 </div>
