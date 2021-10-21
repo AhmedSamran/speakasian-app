@@ -17,6 +17,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 // Components
 import { NavigationMenuComponent } from './navigation-menu/navigation-menu.component';
@@ -46,9 +50,13 @@ import { RegisterComponent } from './register/register.component';
         MatTableModule,
         MatMenuModule,
         MatIconModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
         MatProgressSpinnerModule,
         ReactiveFormsModule,
         HttpClientModule,
+        MatSelectModule,
+        FlexLayoutModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

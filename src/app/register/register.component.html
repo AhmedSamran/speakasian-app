@@ -1,0 +1,126 @@
+<div class="container-fluid row justify-content-center align-items-center">
+    <div class="card mt-5 col-sm-12 col-md-10 col-xl-8">
+        <h2 class="card-header">Register</h2>
+        <div class="card-body">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="row g-3">
+                    <div class="form-group col">
+                        <label>First name</label>
+                        <input
+                            type="text"
+                            placeholder="first name"
+                            formControlName="firstName"
+                            class="form-control"
+                            [ngClass]="{
+                                'is-invalid': registerF.firstName.errors
+                            }"
+                        />
+                        <div
+                            *ngIf="
+                                !registerF.firstName.valid &&
+                                (registerF.firstName.dirty ||
+                                    registerF.firstName.touched)
+                            "
+                            class="invalid-feedback"
+                        >
+                            <div *ngIf="registerF.firstName.errors.required">
+                                <span>First name is required</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col">
+                        <label>Last name</label>
+                        <input
+                            type="text"
+                            placeholder="last name"
+                            formControlName="lastName"
+                            class="form-control"
+                            [ngClass]="{
+                                'is-invalid': registerF.lastName.errors
+                            }"
+                        />
+                        <div
+                            *ngIf="
+                                !registerF.lastName.valid &&
+                                (registerF.lastName.dirty ||
+                                    registerF.lastName.touched)
+                            "
+                            class="invalid-feedback"
+                        >
+                            <div *ngIf="registerF.lastName.errors.required">
+                                <span>Last name is required</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-3">
+                    <div class="form-group col">
+                        <label>Email</label>
+                        <input
+                            type="email"
+                            placeholder="jhon@smith.com"
+                            formControlName="email"
+                            class="form-control"
+                            [ngClass]="{ 'is-invalid': registerF.email.errors }"
+                        />
+                        <div
+                            *ngIf="
+                                !registerF.email.valid &&
+                                (registerF.email.dirty ||
+                                    registerF.email.touched)
+                            "
+                            class="invalid-feedback"
+                        >
+                            <div *ngIf="registerF.email.errors.required">
+                                <span>Email is required</span>
+                            </div>
+                            <div *ngIf="registerF.email.errors.email">
+                                Email must be a valid email address
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col">
+                        <label>Password</label>
+                        <input
+                            type="password"
+                            placeholder="password"
+                            formControlName="password"
+                            class="form-control"
+                            [ngClass]="{
+                                'is-invalid': registerF.password.errors
+                            }"
+                        />
+                        <div
+                            *ngIf="registerF.password.errors"
+                            class="invalid-feedback"
+                        >
+                            <div *ngIf="registerF.password.errors.required">
+                                Password is required
+                            </div>
+                            <div *ngIf="registerF.password.errors.minlength">
+                                Password must be at least 8 characters
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col">
+                        <select class="form-select">
+                            <option selected>Language</option>
+                            <option value="Japanese">One</option>
+                            <option value="Korean">Two</option>
+                            <option value="Chinese">Three</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn custom-btn">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

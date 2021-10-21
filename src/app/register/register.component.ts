@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormControl,
+    FormGroup,
+    Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,16 +15,33 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     submitted = false;
+    Languages: any = ['Japanese', 'Korean', 'Chinese'];
 
+    firstName = new FormControl('', [Validators.required]);
+    lastName = new FormControl('', [Validators.required]);
+    email = new FormControl('', [Validators.required, Validators.email]);
+    password = new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+    ]);
+    passwordCheck = new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+    ]);
     constructor(private router: Router, private formBuilder: FormBuilder) {}
 
-    email: string;
-    password: string;
+    getErrorMessage(): string {
+        if (this.email.hasError('required')) {
+            return 'You must enter a value';
+        }
 
+        return this.email.hasError('email') ? 'Not a valid email' : '';
+    }
     ngOnInit(): void {
         this.registerForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(8)]],
+            passwordCheck: ['', [Validators.required, Validators.minLength(8)]],
             firstName: ['', [Validators.required]],
             lastName: ['', [Validators.required]],
             birthDate: ['', [Validators.required]],
