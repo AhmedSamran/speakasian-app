@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { AuthServiceService } from '../services/auth-service.service';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -11,7 +11,11 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     submitted = false;
 
-    constructor(private router: Router, private formBuilder: FormBuilder) {}
+    constructor(
+        private router: Router,
+        private formBuilder: FormBuilder,
+        private service: AuthServiceService
+    ) {}
 
     email: string;
     password: string;
@@ -36,7 +40,7 @@ export class LoginComponent implements OnInit {
         if (this.loginForm.valid) {
             // Call login API
             console.log('the form is valid');
-            this.router.navigate(['profile']);
+            // this.router.navigate(['profile']);
         }
     }
 }

@@ -94,7 +94,11 @@
                             }"
                         />
                         <div
-                            *ngIf="registerF.password.errors"
+                            *ngIf="
+                                !registerF.password.valid &&
+                                (registerF.password.dirty ||
+                                    registerF.password.touched)
+                            "
                             class="invalid-feedback"
                         >
                             <div *ngIf="registerF.password.errors.required">
@@ -111,14 +115,16 @@
                     <div class="form-group col">
                         <select class="form-select">
                             <option selected>Language</option>
-                            <option value="Japanese">One</option>
-                            <option value="Korean">Two</option>
-                            <option value="Chinese">Three</option>
+                            <option value="1">Japanese</option>
+                            <option value="2">Korean</option>
+                            <option value="3">Chinese</option>
                         </select>
                     </div>
                 </div>
                 <div class="text-center">
-                    <button class="btn custom-btn">Register</button>
+                    <button type="submit" class="btn custom-btn">
+                        Register
+                    </button>
                 </div>
                 <div class="text-center">
                     <span

@@ -6,6 +6,7 @@ import {
     Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthServiceService } from '../services/auth-service.service';
 
 @Component({
     selector: 'app-register',
@@ -28,15 +29,12 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.minLength(6),
     ]);
-    constructor(private router: Router, private formBuilder: FormBuilder) {}
+    constructor(
+        private router: Router,
+        private formBuilder: FormBuilder,
+        private service: AuthServiceService
+    ) {}
 
-    getErrorMessage(): string {
-        if (this.email.hasError('required')) {
-            return 'You must enter a value';
-        }
-
-        return this.email.hasError('email') ? 'Not a valid email' : '';
-    }
     ngOnInit(): void {
         this.registerForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],
@@ -44,8 +42,8 @@ export class RegisterComponent implements OnInit {
             passwordCheck: ['', [Validators.required, Validators.minLength(8)]],
             firstName: ['', [Validators.required]],
             lastName: ['', [Validators.required]],
-            birthDate: ['', [Validators.required]],
-            level: ['', [Validators.required]],
+            // birthDate: ['', [Validators.required]],
+            // level: ['', [Validators.required]],
         });
     }
 
@@ -54,5 +52,15 @@ export class RegisterComponent implements OnInit {
         return this.registerForm.controls;
     }
 
-    onSubmit(): void {}
+    onSubmit(): void {
+        // this.submitted = true;
+        // Call login API
+        console.log('the form is valid');
+        // this.router.navigate(['profile']);
+        const body = {
+            email: 'email@gmail.com',
+            password: 'password',
+        };
+        this.service.registerUser(body);
+    }
 }

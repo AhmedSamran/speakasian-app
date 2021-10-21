@@ -7,17 +7,17 @@ import { generateUri } from './utilites';
 export class AuthServiceService {
     constructor(private httpClient: HttpClient) {}
 
-    loginUserUrl = 'login';
-    registerUserUrl = 'register';
+    private loginUserUrl = 'login';
+    private registerUserUrl = 'register';
 
     public loginUser(loginData: any): any {
-        return this.httpClient.post(generateUri(this.loginUserUrl), loginData);
+        const loginurl = generateUri(this.loginUserUrl);
+        return this.httpClient.post(loginurl, loginData);
     }
 
-    public registerUser(registerData: any): any {
-        return this.httpClient.post(
-            generateUri(this.registerUserUrl),
-            registerData
-        );
+    public registerUser(body: any): any {
+        const registerurl = generateUri(this.registerUserUrl);
+        console.log('URL is ' + registerurl);
+        return this.httpClient.post(registerurl, body);
     }
 }
